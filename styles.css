@@ -62,24 +62,27 @@ a {
 /* End Reset */
 
 :root {
-  /* Spacers */
-  --spacer-sm: 0.5rem;
-  --spacer-md: 1rem;
-  --spacer-lg: 1.5rem;
-  --spacer-xl: 2.25rem;
-  --spacer-2xl: 3rem;
-  --spacer-3xl: 4.25rem;
-  --spacer-4xl: 5rem;
+  /* Spacing */
+  --sz-1: 0.25rem;
+  --sz-2: 0.5rem;
+  --sz-3: 0.75rem;
+  --sz-4: 1rem;
+  --sz-5: 1.25rem;
+  --sz-6: 1.5rem;
+  --sz-7: 2rem;
+  --sz-8: 2.5rem;
+  --sz-9: 3rem;
+  --sz-10: 3.5rem;
+  --sz-11: 4rem;
+  --sz-12: 5rem;
 
-  --container-padding-inline: 1rem;
+  --container-padding-inline: var(--sz-4);
+  --courses-gap-block: var(--sz-8);
+  --footer-margin-top: var(--sz-11);
 
-  --p-sm: 0.5rem;
-  --p-base: 1rem;
-  --p-md: 1.5rem;
-  --m-base: 1rem;
-
-  --courses-gap-block: 2.5rem;
-  --courses-gap-inline: 0rem;
+  /* Border Radius */
+  --rounded-card: 0.625rem;
+  --rounded-full: 9999px;
 
   /* Font Sizes */
   --fs-base: 1rem;
@@ -87,11 +90,13 @@ a {
   --fs-lg: 1.25rem;
   --fs-xl: 1.5rem;
   --fs-2xl: 2.5rem;
+
   /* Font Weight */
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
   --fw-extra: 800;
+
   /* Breakpoints */
   --mobile: 375px;
   --tablet: 768px;
@@ -104,23 +109,26 @@ a {
   --pink-200: #f74780;
   --blue-100: #656ca7;
   --blue-200: #121840;
+
   /* Misc */
   --logo-size: 6rem;
 }
 
 @media (min-width: 48rem) {
   :root {
-    --container-padding-inline: var(--spacer-xl);
-    --courses-gap-block: var(--spacer-2xl);
-    --courses-gap-inline: var(--spacer-md);
+    --container-padding-inline: var(--sz-7);
+    --courses-gap-block: var(--sz-10);
+    --courses-gap-inline: var(--sz-6);
   }
 }
 
 @media (min-width: 64rem) {
   :root {
-    --container-padding-inline: var(--spacer-2xl);
-    --courses-gap-block: var(--spacer-4xl);
+    --courses-gap-block: var(--sz-12);
     --courses-gap-inline: 2rem;
+
+    /* Border Radius */
+    --rounded-card: 0.9375rem;
 
     /* Font Sizes */
     --fs-base: 1.125rem;
@@ -149,7 +157,7 @@ body {
 }
 
 footer {
-  margin-top: auto;
+  margin-block-start: var(--footer-margin-top);
   justify-self: end;
 }
 
@@ -169,7 +177,7 @@ footer {
 .stack {
   display: flex;
   flex-direction: column;
-  gap: var(--spacer-md);
+  gap: var(--sz-4);
 }
 /* Colors */
 
@@ -250,7 +258,7 @@ footer {
   background: linear-gradient(
       180deg,
       rgba(255, 255, 255, 1) 25%,
-      rgba(241, 242, 255, 1) 80%
+      rgba(241, 242, 255, 1) 50%
     )
     no-repeat;
   background-size: cover;
@@ -298,7 +306,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--p-base);
+  padding-block: var(--sz-4);
 }
 
 header > img {
@@ -310,7 +318,7 @@ header > img {
 .button {
   padding-inline: 1.5rem;
   padding-block: 0.75rem;
-  border-radius: 625rem;
+  border-radius: var(--rounded-full);
   width: fit-content;
   /* font-weight: bold; */
 }
@@ -318,31 +326,71 @@ header > img {
 /* Hero Section */
 
 .hero {
-  margin-block-start: var(--spacer-lg);
+  margin-block-start: var(--sz-7);
 }
 
 .hero p {
   max-width: 40ch;
 }
 
-.hero__image-wrapper {
-  overflow: hidden;
-  margin-block-start: var(--spacer-2xl);
-}
-
-.hero img {
-  width: min(100%, 26rem);
-  scale: 1.15;
-  margin: auto;
-}
-
-@media (min-width: 48rem) {
+@media (max-width: 48rem) {
   .hero__image-wrapper {
-    overflow: unset;
+    overflow: hidden;
+    margin-block-start: var(--sz-10);
   }
+
   .hero img {
-    width: unset;
-    margin: unset;
-    scale: unset;
+    width: min(100%, 26rem);
+    scale: 1.15;
+    margin: auto;
   }
+}
+
+/* Course List */
+
+.courses {
+  display: grid;
+  gap: var(--courses-gap-block);
+}
+
+/* Course Items */
+
+.courses__item {
+  border-radius: var(--rounded-card);
+  padding: 3.5rem 1.75rem 2rem;
+  background: var(--white);
+  position: relative;
+}
+
+.courses__item img {
+  position: absolute;
+  top: calc(var(--sz-6) * -1);
+  left: var(--sz-6);
+}
+
+.courses__item p {
+  margin-block-start: var(--sz-4);
+}
+
+.courses__item a {
+  display: block;
+  margin-block-start: var(--sz-6);
+}
+
+.courses__cta {
+  border-radius: var(--rounded-card);
+  padding: 1.75rem;
+}
+
+/* Footer */
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+footer .container > img {
+  max-width: 5.625rem;
 }

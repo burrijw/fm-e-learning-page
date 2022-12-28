@@ -19,9 +19,9 @@
     <title>Frontend Mentor | Skilled e-learning landing page</title>
   </head>
 
-  <body class="clr-blue-200">
+  <body class="clr-blue-200 grad-white-to-blue">
     <!-- todo: restructure the overall page into a grid or flex set of rows, force the footer to the bottom and footer should extend the whole viewport -->
-    <header class="container mt">
+    <header class="container">
       <img src="./assets/logo-dark.svg" alt='Logo for "Skilled"' />
       <a href="#" class="button bg-blue-200 clr-white text-base">Get Started</a>
     </header>
@@ -75,61 +75,66 @@
         </div>
       </section>
       <!-- Course list section -->
-      <section class="container">
-        <div>
+      <section class="container courses">
+        <div class="courses__cta grad-orange-to-pink clr-white">
           <h2>Check out our most popular courses!</h2>
         </div>
-        <div>
+        <div class="courses__item">
           <img src="./assets/icon-animation.svg" alt="" />
-          <h3>Animation</h3>
+          <h3 class="text-lg">Animation</h3>
           <p>
             Learn the latest animation techniques to create stunning motion
             design and captivate your audience.
           </p>
-          <a href="#">Get Started</a>
+          <a href="#" class="text-md clr-pink-200">Get Started</a>
         </div>
-        <div>
+        <div class="courses__item">
           <img src="./assets/icon-design.svg" alt="" />
           <h3>Design</h3>
           <p>
             Create beautiful, usable interfaces to help shape the future of how
             the web looks.
           </p>
-          <a href="#">Get Started</a>
+          <a href="#" class="text-md clr-pink-200">Get Started</a>
         </div>
-        <div>
+        <div class="courses__item">
           <img src="./assets/icon-photography.svg" alt="" />
           <h3>Photography</h3>
           <p>
             Explore critical fundamantals like lighting, composition, and focus
             to capture exceptional photos.
           </p>
-          <a href="#">Get Started</a>
+          <a href="#" class="text-md clr-pink-200">Get Started</a>
         </div>
-        <div>
+        <div class="courses__item">
           <img src="./assets/icon-crypto.svg" alt="" />
           <h3>Crypto</h3>
           <p>
             All you need to know to get started investing in crypto. Go from
             beginner to advanced with this 54 hour course.
           </p>
-          <a href="#">Get Started</a>
+          <a href="#" class="text-md clr-pink-200">Get Started</a>
         </div>
-        <div>
-          <img src="./assets/icon-business.svg" alt="" />
-          <h3>Business</h3>
+        <div class="courses__item">
+          <img
+            aria-labelledby="business"
+            src="./assets/icon-business.svg"
+            alt="business icon"
+          />
+          <h3 id="business">Business</h3>
           <p>
             A step-by-step playbook to help you start, scale, and sustain your
             business without outside investment.
           </p>
-          <a href="#">Get Started</a>
+          <a href="#" class="text-md clr-pink-200">Get Started</a>
         </div>
       </section>
     </main>
+    <!-- Footer -->
     <footer class="bg-blue-200">
       <div class="container">
         <img src="./assets/logo-light.svg" alt="" />
-        <a href="#">Get Started</a>
+        <a href="#" class="button grad-blue-to-pink clr-white">Get Started</a>
       </div>
     </footer>
   </body>
