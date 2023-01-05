@@ -23,7 +23,7 @@
     <!-- todo: restructure the overall page into a grid or flex set of rows, force the footer to the bottom and footer should extend the whole viewport -->
     <header class="container">
       <img src="./assets/logo-dark.svg" alt='Logo for "Skilled"' />
-      <a href="#" class="button bg-blue-200 clr-white text-base">Get Started</a>
+      <a href="#" class="button" data-variant="blue">Get Started</a>
     </header>
     <main>
       <section class="hero">
@@ -34,9 +34,7 @@
             Our modern courses across a range of in-demand skills will give you
             the knowledge you need to live the life you want.
           </p>
-          <a href="#" class="button grad-orange-to-pink clr-white text-base"
-            >Get Started</a
-          >
+          <a href="#" class="button" data-variant="grad-orange">Get Started</a>
         </div>
         <!-- Hero Image -->
         <!-- todo: fix the hero image overflow so that it only shows on extra-wide viewports (over 1024 or maybe 1200) -->
@@ -45,7 +43,7 @@
             <!-- WEBP -->
             <source
               type="image/webp"
-              media="(min-width: 1024px)"
+              media="(min-width: 960px)"
               srcset="
                 ./assets/image-hero-desktop@2x.webp 2x,
                 ./assets/image-hero-desktop.webp    1x
@@ -95,7 +93,7 @@
             Create beautiful, usable interfaces to help shape the future of how
             the web looks.
           </p>
-          <a href="#" class="text-md clr-pink-200">Get Started</a>
+          <a href="#">Get Started</a>
         </div>
         <div class="courses__item">
           <img src="./assets/icon-photography.svg" alt="" />
@@ -104,7 +102,7 @@
             Explore critical fundamantals like lighting, composition, and focus
             to capture exceptional photos.
           </p>
-          <a href="#" class="text-md clr-pink-200">Get Started</a>
+          <a href="#">Get Started</a>
         </div>
         <div class="courses__item">
           <img src="./assets/icon-crypto.svg" alt="" />
@@ -113,7 +111,7 @@
             All you need to know to get started investing in crypto. Go from
             beginner to advanced with this 54 hour course.
           </p>
-          <a href="#" class="text-md clr-pink-200">Get Started</a>
+          <a href="#">Get Started</a>
         </div>
         <div class="courses__item">
           <img
@@ -134,7 +132,7 @@
     <footer class="bg-blue-200">
       <div class="container">
         <img src="./assets/logo-light.svg" alt="" />
-        <a href="#" class="button grad-blue-to-pink clr-white">Get Started</a>
+        <a href="#" class="button" data-variant="grad-blue">Get Started</a>
       </div>
     </footer>
   </body>

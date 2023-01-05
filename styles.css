@@ -17,11 +17,13 @@
 html,
 body {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
 img,
@@ -76,20 +78,29 @@ a {
   --sz-11: 4rem;
   --sz-12: 5rem;
 
-  --container-padding-inline: var(--sz-4);
-  --courses-gap-block: var(--sz-8);
+  --header-pb: clamp(1rem, 0.7111rem + 1.2327vw, 1.5rem);
+  --container-padding-inline: clamp(1rem, -0.4313rem + 6.1069vw, 2.5rem);
+  --courses-gap-block: clamp(2.5rem, 1.055rem + 6.163vw, 5rem);
+  --courses-mb-start: 0rem;
   --footer-margin-top: var(--sz-11);
+
+  /* Sizing */
+  --hero-p-max-width: 34ch;
 
   /* Border Radius */
   --rounded-card: 0.625rem;
   --rounded-full: 9999px;
 
   /* Font Sizes */
-  --fs-base: 1rem;
-  --fs-md: 1.125rem;
-  --fs-lg: 1.25rem;
-  --fs-xl: 1.5rem;
-  --fs-2xl: 2.5rem;
+  --fs-base: clamp(
+    1rem,
+    0.9432rem + 0.2841vw,
+    1.125rem
+  ); /* 16px -> 18px; Body text and courses body text */
+  --fs-md: 1.125rem; /* 18px; buttons and 'get started' links in cards */
+  --fs-lg: clamp(1.25rem, 1.1364rem + 0.5682vw, 1.5rem); /* 20px -> 24px */
+  --fs-xl: clamp(1.5rem, 1.2727rem + 1.1364vw, 2rem); /* 24px -> 32px */
+  --fs-2xl: clamp(2.5rem, -0.5rem + 6.25vw, 3.5rem);
 
   /* Font Weight */
   --fw-regular: 400;
@@ -110,35 +121,25 @@ a {
   --blue-100: #656ca7;
   --blue-200: #121840;
 
+  /* Gradiants */
+  --grad-white-to-blue: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 25%,
+    rgba(241, 242, 255, 1) 50%
+  );
+  --grad-orange-to-pink: linear-gradient(
+    180deg,
+    rgba(255, 97, 60, 1) 0%,
+    rgba(255, 0, 167, 1) 100%
+  );
+  --grad-blue-to-pink: linear-gradient(
+    180deg,
+    rgba(72, 81, 255, 1) 0%,
+    rgba(240, 42, 166, 1) 100%
+  );
   /* Misc */
-  --logo-size: 6rem;
-}
-
-@media (min-width: 48rem) {
-  :root {
-    --container-padding-inline: var(--sz-7);
-    --courses-gap-block: var(--sz-10);
-    --courses-gap-inline: var(--sz-6);
-  }
-}
-
-@media (min-width: 64rem) {
-  :root {
-    --courses-gap-block: var(--sz-12);
-    --courses-gap-inline: 2rem;
-
-    /* Border Radius */
-    --rounded-card: 0.9375rem;
-
-    /* Font Sizes */
-    --fs-base: 1.125rem;
-    --fs-lg: 1.5rem;
-    --fs-xl: 2rem;
-    --fs-2xl: 3.5rem;
-
-    /* misc */
-    --logo-size: 7rem;
-  }
+  --logo-size: clamp(5.5625rem, 4.768rem + 3.3898vw, 6.9375rem);
+  --shadow-courses: 0px 25px 50px rgba(6, 22, 141, 0.0442381);
 }
 
 /* -------------
@@ -156,11 +157,6 @@ body {
   flex-direction: column;
 }
 
-footer {
-  margin-block-start: var(--footer-margin-top);
-  justify-self: end;
-}
-
 /* -------------
  Utilities
 --------------*/
@@ -170,133 +166,22 @@ footer {
   margin-inline: auto;
 }
 
-.overflow-hidden {
-  overflow-x: hidden;
-}
-
 .stack {
   display: flex;
   flex-direction: column;
-  gap: var(--sz-4);
-}
-/* Colors */
-
-/* Background Colors */
-
-.bg-blue-100 {
-  background-color: var(--blue-100);
+  gap: clamp(1.125rem, 0.3305rem + 3.3898vw, 2.5rem);
 }
 
-.bg-blue-200 {
-  background-color: var(--blue-200);
+/*
+====================================================
+Mobile
+====================================================
+*/
+
+body {
+  /* Add white -> blue gradient to the body */
+  background: var(--grad-white-to-blue);
 }
-
-.bg-pink-100 {
-  background-color: var(--pink-100);
-}
-
-.bg-pink-200 {
-  background-color: var(--pink-200);
-}
-
-.bg-white {
-  background-color: var(--white);
-}
-
-.bg-grey {
-  background-color: var(--grey);
-}
-
-/* Text Colors */
-
-.clr-grey {
-  color: var(--grey);
-}
-
-.clr-white {
-  color: var(--white);
-}
-
-.clr-blue-100 {
-  color: var(--blue-100);
-}
-
-.clr-blue-200 {
-  color: var(--blue-200);
-}
-
-.clr-pink-100 {
-  color: var(--pink-100);
-}
-
-.clr-pink-200 {
-  color: var(--pink-200);
-}
-
-/* Gradients */
-
-.grad-orange-to-pink {
-  background: rgb(255, 97, 60);
-  background: linear-gradient(
-    180deg,
-    rgba(255, 97, 60, 1) 0%,
-    rgba(255, 0, 167, 1) 100%
-  );
-}
-
-.grad-blue-to-pink {
-  background: rgb(72, 81, 255);
-  background: linear-gradient(
-    180deg,
-    rgba(72, 81, 255, 1) 0%,
-    rgba(240, 42, 166, 1) 100%
-  );
-}
-
-.grad-white-to-blue {
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 1) 25%,
-      rgba(241, 242, 255, 1) 50%
-    )
-    no-repeat;
-  background-size: cover;
-  /* todo: fix the gradient so it fills the whole body or at least main tag */
-}
-
-/* Text Sizes */
-
-.text-base {
-  font-size: var(--fs-base);
-  font-weight: var(--fw-medium);
-  line-height: 1.75rem;
-}
-
-.text-md {
-  font-size: var(--fs-md);
-  font-weight: var(--fw-bold);
-  line-height: 1.75rem;
-}
-
-.text-lg {
-  font-size: var(--fs-lg);
-  font-weight: var(--fw-extra);
-}
-
-.text-xl {
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-extra);
-}
-
-.text-2xl {
-  font-size: var(--fs-2xl);
-  font-weight: var(--fw-extra);
-}
-
-/*--------
- Blocks
---------*/
 
 /* Header */
 
@@ -306,7 +191,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-block: var(--sz-4);
+  padding-block: var(--header-pb);
 }
 
 header > img {
@@ -320,20 +205,46 @@ header > img {
   padding-block: 0.75rem;
   border-radius: var(--rounded-full);
   width: fit-content;
-  /* font-weight: bold; */
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--white);
+}
+
+.button[data-variant="blue"] {
+  background: var(--blue-200);
+}
+
+.button[data-variant="grad-orange"] {
+  background: var(--grad-orange-to-pink);
+}
+
+.button[data-variant="grad-blue"] {
+  background: var(--grad-blue-to-pink);
 }
 
 /* Hero Section */
 
 .hero {
-  margin-block-start: var(--sz-7);
+  margin-block-start: clamp(2rem, -3.2003rem + 22.188vw, 11rem);
+}
+
+.hero h1 {
+  color: var(--blue-200);
+  font-size: var(--fs-2xl);
 }
 
 .hero p {
-  max-width: 40ch;
+  color: var(--grey);
+  max-width: var(--hero-p-max-width);
 }
 
-@media (max-width: 48rem) {
+/*
+The provided image has some built-in margin that
+differes from the original design. The following
+crops the image to fit the design.
+*/
+
+@media (max-width: 47.9rem) {
   .hero__image-wrapper {
     overflow: hidden;
     margin-block-start: var(--sz-10);
@@ -349,17 +260,25 @@ header > img {
 /* Course List */
 
 .courses {
+  margin-block-start: var(--courses-mb-start);
   display: grid;
-  gap: var(--courses-gap-block);
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: clamp(2.5rem, 1.0555rem + 6.1633vw, 5rem)
+    clamp(0.75rem, -2.625rem + 7.0313vw, 1.875rem);
 }
 
 /* Course Items */
 
 .courses__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  row-gap: clamp(1rem, -0.5rem + 3.125vw, 1.5rem);
   border-radius: var(--rounded-card);
   padding: 3.5rem 1.75rem 2rem;
   background: var(--white);
   position: relative;
+  box-shadow: var(--shadow-courses);
 }
 
 .courses__item img {
@@ -368,21 +287,39 @@ header > img {
   left: var(--sz-6);
 }
 
+.courses__item h3 {
+  font-size: var(--fs-lg);
+}
+
 .courses__item p {
-  margin-block-start: var(--sz-4);
+  /* margin-block-start: clamp(1rem, -0.5rem + 3.125vw, 1.5rem); */
+  color: var(--grey);
+  font-size: var(--fs-base);
 }
 
 .courses__item a {
-  display: block;
-  margin-block-start: var(--sz-6);
+  justify-self: end;
+  display: inline-block;
+  margin-block-start: auto;
+  color: var(--pink-200);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-bold);
 }
 
 .courses__cta {
+  color: var(--white);
+  background: var(--grad-orange-to-pink);
   border-radius: var(--rounded-card);
   padding: 1.75rem;
 }
 
 /* Footer */
+
+footer {
+  background-color: var(--blue-200);
+  margin-block-start: var(--footer-margin-top);
+  justify-self: end;
+}
 
 footer .container {
   display: flex;
@@ -393,4 +330,43 @@ footer .container {
 
 footer .container > img {
   max-width: 5.625rem;
+}
+
+/*
+====================================================
+Tablet
+====================================================
+*/
+
+@media (min-width: 48rem) {
+  :root {
+    --courses-mb-start: 13.125rem;
+  }
+
+  .hero__image-wrapper {
+    /* resetting image styles on tablet+ screens */
+    /* ! hiding while I figure out spacing between header, hero, and courses */
+    /* display: none; */
+    position: absolute;
+    top: -64px;
+    right: -300px;
+  }
+}
+
+/*
+====================================================
+Desktop
+====================================================
+*/
+
+@media (min-width: 60rem) {
+  :root {
+    --courses-mb-start: 15.625rem;
+  }
+
+  .hero__image-wrapper {
+    position: absolute;
+    top: -100px;
+    right: -400px;
+  }
 }
