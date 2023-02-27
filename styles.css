@@ -157,6 +157,10 @@ body {
   flex-direction: column;
 }
 
+a:hover, button:hover {
+  opacity: 0.75;
+}
+
 /* -------------
  Utilities
 --------------*/
@@ -238,6 +242,10 @@ header > img {
   max-width: var(--hero-p-max-width);
 }
 
+.hero__image-wrapper {
+  z-index: -1;
+}
+
 /*
 The provided image has some built-in margin that
 differes from the original design. The following
@@ -292,7 +300,6 @@ crops the image to fit the design.
 }
 
 .courses__item p {
-  /* margin-block-start: clamp(1rem, -0.5rem + 3.125vw, 1.5rem); */
   color: var(--grey);
   font-size: var(--fs-base);
 }
@@ -344,9 +351,6 @@ Tablet
   }
 
   .hero__image-wrapper {
-    /* resetting image styles on tablet+ screens */
-    /* ! hiding while I figure out spacing between header, hero, and courses */
-    /* display: none; */
     position: absolute;
     top: -64px;
     right: -300px;
