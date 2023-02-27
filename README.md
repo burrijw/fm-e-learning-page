@@ -1,2 +1,3 @@
-# fm-e-learning-page
-Created with CodeSandbox
+# Skilled E-Learning Page 
+
+This is a solution to the "Skilled E-Learning Page" Frontend Mentor challenge.
